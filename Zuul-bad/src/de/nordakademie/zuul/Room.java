@@ -19,24 +19,6 @@ import java.util.HashMap;
 public class Room {
 	private String description;
 	private Map<String, Room>exits = new HashMap<>();
-	
-	
-
-	public Room getNorthExit() {
-		return exits.get("north");
-	}
-
-	public Room getSouthExit() {
-		return exits.get("south");
-	}
-
-	public Room getEastExit() {
-		return exits.get("east");
-	}
-
-	public Room getWestExit() {
-		return exits.get("west");
-	}
 
 	/**
 	 * Create a room described "description". Initially, it has no exits.
@@ -77,11 +59,14 @@ public class Room {
 		System.out.print("Exits: ");
 		
 		for(String exit: exits.keySet()){
-		System.out.println(exit+" ");	
+		System.out.print(exit+" ");	
 		}
 		System.out.println();
 	}
 
+	public Room goNextRoom(String direction){
+		return exits.get(direction);
+	}
 	/**
 	 * @return The description of the room.
 	 */
