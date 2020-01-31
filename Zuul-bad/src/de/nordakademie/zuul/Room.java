@@ -1,4 +1,5 @@
 package de.nordakademie.zuul;
+
 import java.util.Map;
 import java.util.HashMap;
 
@@ -16,9 +17,11 @@ import java.util.HashMap;
  * @author Michael Kölling and David J. Barnes
  * @version 2016.02.29
  */
+
+
 public class Room {
 	private String description;
-	private Map<String, Room>exits = new HashMap<>();
+	private Map<String, Room> exits = new HashMap<>();
 
 	/**
 	 * Create a room described "description". Initially, it has no exits.
@@ -30,6 +33,7 @@ public class Room {
 		this.description = description;
 	}
 
+	
 	/**
 	 * Define the exits of this room. Every direction either leads to another room
 	 * or is null (no exit there).
@@ -54,17 +58,26 @@ public class Room {
 		}
 	}
 
+	
+	public void setExit(String direction, Room roomInDirection) {
+		if (direction != null) {
+			exits.put(direction, roomInDirection);
+		}
+	}
+
+	
 	public void printLocationInfo() {
 		System.out.println("You are " + this.description);
 		System.out.print("Exits: ");
-		
-		for(String exit: exits.keySet()){
-		System.out.print(exit+" ");	
+
+		for (String exit : exits.keySet()) {
+			System.out.print(exit + " ");
 		}
 		System.out.println();
 	}
 
-	public Room goNextRoom(String direction){
+	
+	public Room goNextRoom(String direction) {
 		return exits.get(direction);
 	}
 	/**
